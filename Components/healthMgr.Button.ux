@@ -1,4 +1,4 @@
-<Panel ux:Class="healthMgr.Button" Clicked="{save}" Margin="10" Padding="10">
+<Panel ux:Class="healthMgr.Button" Margin="10" Padding="10">
 	<string ux:Property="Text"/>
 
 	<Rectangle Layer="Background" Color="Gray" CornerRadius="4">

@@ -16,6 +16,7 @@ renew();
 
 
 function updateHistory(id, date, comments){
+	console.log("updated date: " + date);
 	for (var i=0;i<histories.length;i++){
 		var history=histories.getAt(i);
 		if (history.id == id){
@@ -38,8 +39,8 @@ function addHistory(){
 			});
 }
 
-function deleteHistory(){
-	Backend.deleteHistory()
+function deleteHistory(id){
+	Backend.deleteHistory(id)
 			.catch(function(error){
 				console.log("Couldn't delete history: "+error);
 			});

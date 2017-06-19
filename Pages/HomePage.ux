@@ -14,8 +14,12 @@
 
 					<Separator/>
 					<DockPanel>
-						<Panel HitTestMode="LocalBoundsAndChildren" Clicked="{goToHistory}">
+						<Panel Clicked="{goToHistory}" Width="80%" Dock="Left">
 							<Text Color="White" Value="{date}" Margin="10"/>
+							<healthMgr.ButtonPress/>
+						</Panel>
+						<Panel Clicked="{deleteHistory}" Width="10%" Dock="Right">
+							<healthMgr.Text Value="X" Margin="10"/>
 							<healthMgr.ButtonPress/>
 						</Panel>
 					</DockPanel>

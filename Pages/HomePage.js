@@ -4,6 +4,7 @@ var Context = require("Modules/Context");
 
 function goToHistory(arg){
 	var history = arg.data;
+	// console.log(history);
 	router.push("editHistory", history);
 }
 
@@ -12,9 +13,11 @@ function addHistory(){
 	Context.renew();
 }
 
-function deleteHistory(){
-	Context.deleteHistory(history.value.id);
-	router.goBack();
+function deleteHistory(arg){
+	var history = arg.data;
+	console.log(history.id);
+	Context.deleteHistory(history.id);
+	Context.renew();
 }
 
 module.exports={

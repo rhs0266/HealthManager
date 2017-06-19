@@ -20,6 +20,6 @@ module.exports = {
 	date: date,
 	comments: comments,
 
-	goBack: goBack,
-	save: save
+	save: save,
+	goBack: goBack
 };

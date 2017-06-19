@@ -71,14 +71,12 @@ function addHistory(){
 	});
 }
 
-function updateHistory(id, name, num, date, comments){
+function updateHistory(id, date, comments){
 	return new Promise(function(resolve, reject){
 		setTimeout(function(){
 			for (var i=0;i<histories.length;i++){
 				var history = histories[i];
 				if (history.id == id){
-					history.name = name;
-					history.num = num;
 					history.date = date;
 					history.comments = comments;
 					break;
@@ -91,7 +89,15 @@ function updateHistory(id, name, num, date, comments){
 }
 
 function deleteHistory(id){
-
+	return new Promise(function(resolve, reject){
+		for (var i=0;i<histories.length;i++){
+			var history=histories[i];
+			if (history.id==id){
+				histories.splice(i,1);
+				break;
+			}
+		}
+	});
 }
 
 module.exports={

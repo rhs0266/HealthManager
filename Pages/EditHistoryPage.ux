@@ -3,13 +3,21 @@
 	<Router ux:Dependency="router" />
 	<JavaScript File="EditHistoryPage.js"/>
 
+<!--  -->
 	<healthMgr.Text ux:Class="TitleText" Opacity=".6" Margin="0, 0, 0, 5" />
-	<StackPanel ux:Class="EditHistoryItem">
+	<StackPanel ux:Class="EditHistoryItemBox">
 		<string ux:Property="titleText"/>
 		<string ux:Property="textBox"/>
 		<TitleText Value="{ReadProperty titleText}"/>
-		<healthMgr.TextBox Value="{ReadProperty textBox}"/>
+		<healthMgr.TextBox Value="{Property textBox}"/>
 	</StackPanel>
+	<StackPanel ux:Class="EditHistoryItemView">
+		<string ux:Property="titleText"/>
+		<string ux:Property="textView"/>
+		<TitleText Value="{ReadProperty titleText}"/>
+		<healthMgr.TextView Value="{Property textView}"/>
+	</StackPanel>
+<!--  -->
 
 	<DockPanel>
 		<Grid ColumnCount="2" Dock="Bottom">
@@ -19,13 +27,8 @@
 		</Grid>
 		<ScrollView>
 			<StackPanel ItemSpacing="10" Padding="10">
-
-				<EditHistoryItem titleText="Date:" textBox="{date}"/>
-				<StackPanel>
-					<TitleText Value="Comments:"/>
-					<healthMgr.TextView Value="{comments}"/>
-				</StackPanel>
-				
+				<EditHistoryItemBox titleText="Date:" textBox="{date}"/>
+				<EditHistoryItemView titleText="Comments:" textView="{comments}"/>
 			</StackPanel>
 		</ScrollView>
 	</DockPanel>
