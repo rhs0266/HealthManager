@@ -1,0 +1,32 @@
+<Page ux:Class="EditHistoryPage">
+	<Image Layer="Background" File="../Assets/edit_background.jpg" Width="200%"/>
+	<Router ux:Dependency="router" />
+	<JavaScript File="EditHistoryPage.js"/>
+
+	<healthMgr.Text ux:Class="TitleText" Opacity=".6" Margin="0, 0, 0, 5" />
+	<StackPanel ux:Class="EditHistoryItem">
+		<string ux:Property="titleText"/>
+		<string ux:Property="textBox"/>
+		<TitleText Value="{ReadProperty titleText}"/>
+		<healthMgr.TextBox Value="{ReadProperty textBox}"/>
+	</StackPanel>
+
+	<DockPanel>
+		<Grid ColumnCount="2" Dock="Bottom">
+			<healthMgr.Button Text="Save" Clicked="{save}"/>
+			<healthMgr.Button Text="Back" Clicked="{goBack}"/>
+			<!-- <healthMgr.Button Text="Delete" Clicked="{deleteDay}"/> -->
+		</Grid>
+		<ScrollView>
+			<StackPanel ItemSpacing="10" Padding="10">
+
+				<EditHistoryItem titleText="Date:" textBox="{date}"/>
+				<StackPanel>
+					<TitleText Value="Comments:"/>
+					<healthMgr.TextView Value="{comments}"/>
+				</StackPanel>
+				
+			</StackPanel>
+		</ScrollView>
+	</DockPanel>
+</Page>

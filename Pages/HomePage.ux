@@ -1,0 +1,28 @@
+<Page ux:Class="HomePage">
+	<Image Layer="Background" File="../Assets/edit_background.jpg" Width="200%"/>
+	<Router ux:Dependency="router" />
+	<JavaScript File="HomePage.js"/>
+	<DockPanel>
+		<Panel Dock="Top" Width="100%" Height="30%">
+			<Image Layer="Background" File="../Assets/health_title.png"/>
+		</Panel>
+		<ScrollView>
+			<StackPanel>
+				<Rectangle ux:Class="Separator" Height="1" Fill="#fff4"/>
+				<healthMgr.Button Text="오늘의 운동 추가" Clicked="{addHistory}" Alignment="BottomCenter"/>
+				<Each Items="{histories}">
+
+					<Separator/>
+					<DockPanel>
+						<Panel HitTestMode="LocalBoundsAndChildren" Clicked="{goToHistory}">
+							<Text Color="White" Value="{date}" Margin="10"/>
+							<healthMgr.ButtonPress/>
+						</Panel>
+					</DockPanel>
+				</Each>
+				<Separator/>
+
+			</StackPanel>
+		</ScrollView>
+	</DockPanel>
+</Page>

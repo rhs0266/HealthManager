@@ -1,0 +1,3 @@
+<WhilePressed ux:Class="healthMgr.ButtonPress">
+	<Scale Factor=".95"	Duration=".08" Easing="QuadraticOut"/>
+</WhilePressed>

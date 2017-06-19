@@ -1,0 +1,9 @@
+<App Background="#022328">
+	<Router ux:Name="router"/>
+	<ClientPanel>
+		<Navigator DefaultPath="home">
+			<HomePage ux:Template="home" router="router"/>
+			<EditHistoryPage ux:Template="editHistory" router="router"/>
+		</Navigator>
+	</ClientPanel>
+</App>
