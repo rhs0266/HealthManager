@@ -1,4 +1,5 @@
 var Context = require("Modules/Context");
+var ImageControl = require("Modules/ImageControl");
 
 var history = this.Parameter;
 
@@ -21,5 +22,6 @@ module.exports = {
 	comments: comments,
 
 	save: save,
-	goBack: goBack
+	goBack: goBack,
+	imageURL:ImageControl.imageURL
 };

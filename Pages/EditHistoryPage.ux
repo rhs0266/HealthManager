@@ -1,5 +1,5 @@
 <Page ux:Class="EditHistoryPage">
-	<Image Layer="Background" File="../Assets/edit_background.jpg" Width="200%"/>
+	<Image Layer="Background" File="../Assets/bg_1.jpg" Width="200%"/>
 	<Router ux:Dependency="router" />
 	<JavaScript File="EditHistoryPage.js"/>
 
@@ -25,11 +25,12 @@
 			<healthMgr.Button Text="Back" Clicked="{goBack}"/>
 			<!-- <healthMgr.Button Text="Delete" Clicked="{deleteDay}"/> -->
 		</Grid>
-		<ScrollView>
+		<ScrollView Dock="Top">
 			<StackPanel ItemSpacing="10" Padding="10">
 				<EditHistoryItemBox titleText="Date:" textBox="{date}"/>
 				<EditHistoryItemView titleText="Comments:" textView="{comments}"/>
 			</StackPanel>
 		</ScrollView>
+		<healthMgr.Button Text="Add Event" Dock="Top"/>
 	</DockPanel>
 </Page>

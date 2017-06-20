@@ -1,8 +1,8 @@
 <Page ux:Class="HomePage">
-	<Image Layer="Background" File="../Assets/edit_background.jpg" Width="200%"/>
-	<Router ux:Dependency="router" />
 	<JavaScript File="HomePage.js"/>
+	<Router ux:Dependency="router" />
 	<DockPanel>
+		<ImageFill StretchMode="UniformToFill" Url="{imageURL}"/>
 		<Panel Dock="Top" Width="100%" Height="30%">
 			<Image Layer="Background" File="../Assets/health_title.png"/>
 		</Panel>
@@ -18,7 +18,7 @@
 							<Text Color="White" Value="{date}" Margin="10"/>
 							<healthMgr.ButtonPress/>
 						</Panel>
-						<Panel Clicked="{deleteHistory}" Width="10%" Dock="Right">
+						<Panel Clicked="{confirm_visualization}" Width="10%" Dock="Right">
 							<healthMgr.Text Value="X" Margin="10"/>
 							<healthMgr.ButtonPress/>
 						</Panel>
@@ -29,4 +29,22 @@
 			</StackPanel>
 		</ScrollView>
 	</DockPanel>
+	<WhileTrue Value="{confirm_visible}">
+		<Panel Opacity="100" Width="80%" Height="25%" ZOffset="1.0">
+			<Rectangle Layer="Background" Color="Gray"/>
+			<DockPanel>
+				<StackPanel  Dock="Bottom">
+					<Separator/>
+					<Grid ColumnCount="2" Dock="Bottom">
+						<healthMgr.Button Text="Yes" Clicked="{deleteHistory}"/>
+						<healthMgr.Button Text="No" Clicked="{confirm_hidden}"/>
+					</Grid>
+				</StackPanel>
+			</DockPanel>
+			<StackPanel ux:Name="parentElement">
+				<Text FontSize="min(height(parentElement),width(parentElement))*0.15" Alignment="Center" Margin="0,25,0,0	" TextWrapping="Wrap">Really?</Text>
+				<Text FontSize="min(height(parentElement),width(parentElement))*0.15" Alignment="Center" Margin="25,0,25,25" TextWrapping="Wrap">Data will be gone!</Text>
+			</StackPanel>
+		</Panel>
+	</WhileTrue>
 </Page>
