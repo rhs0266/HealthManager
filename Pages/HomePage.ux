@@ -2,7 +2,11 @@
 	<JavaScript File="HomePage.js"/>
 	<Router ux:Dependency="router" />
 	<DockPanel>
-		<ImageFill StretchMode="UniformToFill" Url="{imageURL}"/>
+		<ImageFill ux:Name="background" StretchMode="UniformToFill" Url="{imageURL}">
+		</ImageFill>
+		<!-- <WhilePressed>
+			<Change background.Opacity="0.3" Duration="1"/>
+		</WhilePressed> -->
 		<Panel Dock="Top" Width="100%" Height="30%">
 			<Image Layer="Background" File="../Assets/health_title.png"/>
 		</Panel>

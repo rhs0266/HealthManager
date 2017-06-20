@@ -5,14 +5,14 @@ var URLList=["http://cfile224.uf.daum.net/image/24544D46543DD90B11DE12",
 
 var imageURL=Observable(URLList[0]);
 var idx=0;
-var imageNum=URLList.length;
+var imageNum=7;
 
 setInterval(function(){
 	// imageURL.value = "../Assets/bg_"+cnt+".jpg";
-	imageURL.value = URLList[idx];
-	idx=idx+1;
-	if (idx==imageNum) idx=0;;
-},1000);
+	idx += Math.floor(Math.random()*7);
+	idx %= imageNum;
+	imageURL.value = "https://github.com/rhs0266/HealthManager/blob/master/Assets/bg_"+(idx+1)+".jpg?raw=true";
+},10000);
 
 
 module.exports={imageURL:imageURL};
