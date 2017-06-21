@@ -4,6 +4,7 @@
 		<Navigator DefaultPath="home">
 			<HomePage ux:Template="home" router="router"/>
 			<EditHistoryPage ux:Template="editHistory" router="router"/>
+			<EventListPage ux:Template="eventList" router="router" />
 		</Navigator>
 	</ClientPanel>
 </App>

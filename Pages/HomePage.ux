@@ -1,38 +1,69 @@
 <Page ux:Class="HomePage">
 	<JavaScript File="HomePage.js"/>
 	<Router ux:Dependency="router" />
-	<DockPanel>
-		<ImageFill ux:Name="background" StretchMode="UniformToFill" Url="{imageURL}">
-		</ImageFill>
-		<!-- <WhilePressed>
-			<Change background.Opacity="0.3" Duration="1"/>
-		</WhilePressed> -->
-		<Panel Dock="Top" Width="100%" Height="30%">
-			<Image Layer="Background" File="../Assets/health_title.png"/>
+
+	<!-- <iOS.StatusBarConfig Style="Dark" /> -->
+	<EdgeNavigator>
+		<Panel ux:Name="sidebar" Edge="Left" Width="100%" Margin="0,0,80,0" Background="#37474F">
+			<Shadow ux:Name="shadow" Angle="180" Distance="8" Size="16" Color="#0000" />
+			<ActivatingAnimation>
+				<Change shadow.Color="#0004" />
+			</ActivatingAnimation>
+
+			<Panel Clicked="{goToEventList}" Width="80%" Dock="Left">
+				<healthMgr.Text Value="Main Menu" Margin="10"/>
+				<healthMgr.ButtonPress/>
+			</Panel>
+
 		</Panel>
-		<ScrollView>
-			<StackPanel>
-				<Rectangle ux:Class="Separator" Height="1" Fill="#fff4"/>
-				<healthMgr.Button Text="오늘의 운동 추가" Clicked="{addHistory}" Alignment="BottomCenter"/>
-				<Each Items="{histories}">
-
-					<Separator/>
-					<DockPanel>
-						<Panel Clicked="{goToHistory}" Width="80%" Dock="Left">
-							<Text Color="White" Value="{date}" Margin="10"/>
-							<healthMgr.ButtonPress/>
-						</Panel>
-						<Panel Clicked="{confirm_visualization}" Width="10%" Dock="Right">
-							<healthMgr.Text Value="X" Margin="10"/>
-							<healthMgr.ButtonPress/>
-						</Panel>
-					</DockPanel>
-				</Each>
-				<Separator/>
-
+		<DockPanel>
+			<ImageFill ux:Name="background" StretchMode="UniformToFill" Url="{imageURL}">
+			</ImageFill>
+			<StackPanel Dock="Top" Color="#0005">
+				<Shadow Size="3" Distance="1" />
+				<StatusBarBackground />
+				<Panel Height="56">
+					<Hamburger Alignment="Left">
+						<WhileTrue Value="{confirm_not_visible}">
+							<Clicked>
+								<NavigateToggle Target="sidebar" />
+							</Clicked>
+						</WhileTrue>
+					</Hamburger>
+				</Panel>
 			</StackPanel>
-		</ScrollView>
-	</DockPanel>
+			<!-- <WhilePressed>
+				<Change background.Opacity="0.3" Duration="1"/>
+			</WhilePressed> -->
+			<Panel Dock="Top" Width="100%" Height="30%">
+				<Image Layer="Background" File="../Assets/health_title.png"/>
+			</Panel>
+			<ScrollView>
+				<StackPanel>
+					<Rectangle ux:Class="Separator" Height="1" Fill="#fff4"/>
+					<healthMgr.Button Text="오늘의 운동 추가" Clicked="{addHistory}" Alignment="BottomCenter"/>
+					<Each Items="{histories}">
+
+						<Separator/>
+						<DockPanel>
+							<Panel Clicked="{goToEditHistory}" Width="80%" Dock="Left">
+								<healthMgr.Text Value="{date}" Margin="10"/>
+								<healthMgr.ButtonPress/>
+							</Panel>
+							<Panel Clicked="{confirm_visualization}" Width="10%" Dock="Right">
+								<healthMgr.Text Value="X" Margin="10"/>
+								<healthMgr.ButtonPress/>
+							</Panel>
+						</DockPanel>
+					</Each>
+					<Separator/>
+
+				</StackPanel>
+			</ScrollView>
+		</DockPanel>
+		
+	</EdgeNavigator>	
+
 	<WhileTrue Value="{confirm_visible}">
 		<Panel Opacity="100" Width="80%" Height="25%" ZOffset="1.0">
 			<Rectangle Layer="Background" Color="Gray"/>

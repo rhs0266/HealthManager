@@ -1,3 +1,4 @@
 <Page ux:Class="EventListPage">
-	
+	<JavaScript File="EventListPage.js"/>
+	<Router ux:Dependency="router" />
 </Page>
