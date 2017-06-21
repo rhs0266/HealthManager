@@ -19,7 +19,7 @@ function goToEventList(){
 
 function addHistory(){
 	Context.addHistory();
-	Context.renew();
+	Context.renewHistories();
 }
 
 function confirm_visualization(arg){
@@ -36,7 +36,7 @@ function confirm_hidden(){
 function deleteHistory(){
 	var history = arg_save.data;
 	Context.deleteHistory(history.id);
-	Context.renew();
+	Context.renewHistories();
 	confirm_hidden();
 }
 

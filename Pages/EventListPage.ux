@@ -1,4 +1,65 @@
 <Page ux:Class="EventListPage">
 	<JavaScript File="EventListPage.js"/>
 	<Router ux:Dependency="router" />
+
+
+	<EdgeNavigator>
+		<Panel ux:Name="sidebar" Edge="Left" Width="100%" Margin="0,0,80,0" Background="#37474F">
+			<Shadow ux:Name="shadow" Angle="180" Distance="8" Size="16" Color="#0000" />
+			<ActivatingAnimation>
+				<Change shadow.Color="#0004" />
+			</ActivatingAnimation>
+
+			<!-- <Panel Clicked="{goToEventList}" Width="80%" Dock="Left"> -->
+			<StackPanel>
+				<Panel Width="80%" Dock="Left">
+					<Clicked Handler="{goToMainMenu}">
+								<NavigateToggle Target="sidebar" />
+					</Clicked>
+					<healthMgr.Text Value="Main Menu" Margin="10"/>
+					<healthMgr.ButtonPress/>
+				</Panel>
+				<Panel Width="80%" Dock="Left">
+					<Clicked>
+								<NavigateToggle Target="sidebar" />
+					</Clicked>
+					<healthMgr.Text Value="Event List" Margin="10"/>
+					<healthMgr.ButtonPress/>
+				</Panel>
+			</StackPanel>
+
+		</Panel>
+		<DockPanel>
+			<ImageFill ux:Name="background" StretchMode="UniformToFill" Url="{imageURL}"/>
+			<StackPanel Dock="Top" Color="#0005">
+				<Shadow Size="3" Distance="1" />
+				<StatusBarBackground />
+				<Panel Height="56">
+					<Hamburger Alignment="Left">
+						<Clicked>
+							<NavigateToggle Target="sidebar" />
+						</Clicked>
+					</Hamburger>
+				</Panel>
+			</StackPanel>
+			<ScrollView>
+				<StackPanel>
+					<!-- <healthMgr.Button Text="새로운 운동 추가" Clicked="{}" Alignment="BottomCenter"/> -->
+					<Each Items="{eventList}">
+
+						<Separator/>
+						<DockPanel>
+							<Panel Clicked="{}" Width="80%" Dock="Left">
+								<healthMgr.Text Value="{name}" Margin="10"/>
+								<healthMgr.ButtonPress/>
+							</Panel>
+						</DockPanel>
+					</Each>
+					<Separator/>
+
+				</StackPanel>
+			</ScrollView>
+		</DockPanel>
+		
+	</EdgeNavigator>	
 </Page>

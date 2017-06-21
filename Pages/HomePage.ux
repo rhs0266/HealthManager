@@ -10,10 +10,22 @@
 				<Change shadow.Color="#0004" />
 			</ActivatingAnimation>
 
-			<Panel Clicked="{goToEventList}" Width="80%" Dock="Left">
-				<healthMgr.Text Value="Main Menu" Margin="10"/>
-				<healthMgr.ButtonPress/>
-			</Panel>
+			<StackPanel>
+				<Panel Width="80%" Dock="Left">
+					<Clicked>
+								<NavigateToggle Target="sidebar" />
+					</Clicked>
+					<healthMgr.Text Value="Main Menu" Margin="10"/>
+					<healthMgr.ButtonPress/>
+				</Panel>
+				<Panel Width="80%" Dock="Left">
+					<Clicked Handler="{goToEventList}">
+								<NavigateToggle Target="sidebar" />
+					</Clicked>
+					<healthMgr.Text Value="Event List" Margin="10"/>
+					<healthMgr.ButtonPress/>
+				</Panel>
+			</StackPanel>
 
 		</Panel>
 		<DockPanel>
@@ -32,9 +44,6 @@
 					</Hamburger>
 				</Panel>
 			</StackPanel>
-			<!-- <WhilePressed>
-				<Change background.Opacity="0.3" Duration="1"/>
-			</WhilePressed> -->
 			<Panel Dock="Top" Width="100%" Height="30%">
 				<Image Layer="Background" File="../Assets/health_title.png"/>
 			</Panel>
