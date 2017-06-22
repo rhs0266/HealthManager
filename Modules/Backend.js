@@ -1,28 +1,3 @@
-
-var histories = [
-	{
-		id: 0,
-		// category: 0,
-		date: "17-06-01",
-		comments: "",
-		events: []
-	},
-	{
-		id: 1,
-		// category: 0,
-		date: "17-06-02",
-		comments: "",
-		events: []
-	},
-	{
-		id: 2,
-		// category: 0,
-		date: "17-06-01",
-		comments: "",
-		events: []
-	}
-];
-
 var eventList = [
 {
 	id: 0,
@@ -52,6 +27,35 @@ var eventList = [
 	// numPerSet: 0, // 1 set 당 몇 번
 	// setNum: 0 // set 개수
 }];
+
+var histories = [
+	{
+		id: 0,
+		// category: 0,
+		date: "17-06-01",
+		comments: "",
+		events: [],
+		eventList: eventList
+	},
+	{
+		id: 1,
+		// category: 0,
+		date: "17-06-02",
+		comments: "",
+		events: [],
+		eventList: eventList
+	},
+	{
+		id: 2,
+		// category: 0,
+		date: "17-06-01",
+		comments: "",
+		events: [],
+		eventList: eventList
+	}
+];
+
+
 
 function findById(id, arr){
 	for (var i=0;i<arr.length;i++){
@@ -104,7 +108,8 @@ function addHistory(){
 			id:newId,
 			date:today,
 			comments:"오늘도 운동을 하셨군요! ^_^",
-			events:[]
+			events:[],
+			eventList: eventList
 		});
 	});
 }
@@ -152,23 +157,28 @@ function getHistoryEvents(id){
 	});
 }
 
-function addHistoryEvent(historyId, eventId){
+function addHistoryEvent(historyId){
 	return new Promise(function(resolve, reject){
 		setTimeout(function(){
+			console.log(historyId);
 			var history = findById(historyId, histories);
+			if (history == null){
+				reject();
+				return 0;
+			}
 			var historyEvents = history.events;
-			var event = findById(eventId, eventList);
+			// var event = findById(eventId, eventList);
 
 			var newId = 0;
 			for (;;newId++){
-				if (findById(newId,histories) == null) break;
+				if (findById(newId,history.events) == null) break;
 			}
 
 			historyEvents.push({
 				id: newId,
-				event_id: event.id,
-				name: event.name,
-				label: event.label,
+				event_id: -1,
+				name: "Select",
+				label: "",
 				numPerSet: 0,
 				setNum: 0
 			});
@@ -176,7 +186,7 @@ function addHistoryEvent(historyId, eventId){
 	});
 }
 
-function updateHistoryEvent(historyId, historyEventId, numPerSet, setNum) { // {0} 기록의 {1} 운동에 대한 정보를 {2}, {3} 으로 변경하라
+function updateHistoryEvent(historyId, historyEventId, eventId, numPerSet, setNum) { // {0} 기록의 {1} 운동에 대한 정보를 {2}, {3} 으로 변경하라
 	return new Promise(function(resolve, reject){
 		setTimeout(function(){
 			var history = findById(historyId, histories);
@@ -186,9 +196,11 @@ function updateHistoryEvent(historyId, historyEventId, numPerSet, setNum) { // {
 			}
 			var historyEvent = findById(historyEventId, history.events);
 			if (historyEvent == null){
-				reject();
 				return 0;
 			}
+			historyEvent.eventId = eventId;
+			historyEvent.name = eventList[eventId].name;
+			historyEvent.label = eventList[eventId].label;
 			historyEvent.numPerSet = numPerSet;
 			historyEvent.setNum = setNum;
 		}, 0);

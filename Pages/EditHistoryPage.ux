@@ -23,14 +23,14 @@
 		<Grid ColumnCount="2" Dock="Bottom">
 			<healthMgr.Button Text="Save" Clicked="{save}"/>
 			<healthMgr.Button Text="Back" Clicked="{goBack}"/>
-			<!-- <healthMgr.Button Text="Delete" Clicked="{deleteDay}"/> -->
 		</Grid>
-		<ScrollView Dock="Top">
-			<StackPanel ItemSpacing="10" Padding="10">
-				<EditHistoryItemBox titleText="Date:" textBox="{date}"/>
-				<EditHistoryItemView titleText="Comments:" textView="{comments}"/>
-			</StackPanel>
-		</ScrollView>
-		<healthMgr.Button Text="Add Event" Dock="Top"/>
+		<StackPanel ItemSpacing="10" Padding="10" Dock="Top">
+			<EditHistoryItemBox titleText="Date:" textBox="{date}"/>
+			<EditHistoryItemView titleText="Comments:" textView="{comments}"/>
+		</StackPanel>
+		<healthMgr.Button Text="Add Event" Dock="Top" Clicked="{addHistoryEvent}"/>
+
+		<object ux:Global="eventList" ux:Value="{eventList}"/>
+		<historyEventsListing/>
 	</DockPanel>
 </Page>

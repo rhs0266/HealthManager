@@ -13,14 +13,14 @@
 			<StackPanel>
 				<Panel Width="80%" Dock="Left">
 					<Clicked>
-								<NavigateToggle Target="sidebar" />
+						<NavigateToggle Target="sidebar" />
 					</Clicked>
 					<healthMgr.Text Value="Main Menu" Margin="10"/>
 					<healthMgr.ButtonPress/>
 				</Panel>
 				<Panel Width="80%" Dock="Left">
 					<Clicked Handler="{goToEventList}">
-								<NavigateToggle Target="sidebar" />
+						<NavigateToggle Target="sidebar" />
 					</Clicked>
 					<healthMgr.Text Value="Event List" Margin="10"/>
 					<healthMgr.ButtonPress/>

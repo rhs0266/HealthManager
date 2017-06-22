@@ -67,12 +67,11 @@ function deleteHistory(id){
 			});
 }
 
-function addHistoryEvent(historyId, eventId) {
-	Backend.addHistoryEvent(historyId, eventId)
+function addHistoryEvent(historyId) {
+	Backend.addHistoryEvent(historyId)
 			.catch(function(error) {
 				console.log("Couldn't add history event: "+error);
 			});
-	// body...
 }
 
 function updateHistoryEvent(historyId, historyEventId, numPerSet, setNum) {
@@ -85,6 +84,7 @@ function updateHistoryEvent(historyId, historyEventId, numPerSet, setNum) {
 module.exports = {
 	histories:histories,
 	eventList:eventList,
+	historyEvents: historyEvents,
 	renewEventList: renewEventList,
 
 	renewHistories: renewHistories,

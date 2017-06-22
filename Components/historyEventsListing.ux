@@ -1,0 +1,11 @@
+<ScrollView ux:Class="historyEventsListing">
+	<StackPanel>
+		<Each Items="{historyEvents}">
+			<Separator/>
+			<Panel>
+				<ComboBox Items="eventList" Value="{name}"/>
+			</Panel>
+		</Each>
+		<Separator/>
+	</StackPanel>
+</ScrollView>

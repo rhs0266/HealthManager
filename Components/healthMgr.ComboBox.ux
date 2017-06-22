@@ -1,0 +1,41 @@
+<Panel ux:Class="ComboBox" HitTestMode="LocalBoundsAndChildren">
+	<object ux:Property="Items"/>
+	<string ux:Property="Value"/>
+	<Panel ux:Name="theOuter" Padding="5">
+		<Rectangle Layer="Background" Color="Gray">
+			<Stroke Width="1" Color="Black"/>
+		</Rectangle>
+		<Label ux:Name="theSelected" Color="White"/>
+		<Tapped>
+			<Set thePopup.Value="true"/>
+		</Tapped>
+	</Panel>
+
+	<Panel ux:Name="theList" Visibility="Visible" Layer="Overlay" Padding="5">
+		<StackPanel Color="Gray" Alignment="Top" BoxSizing="NoImplicitMax" ZOffset="1.0">
+			<Rectangle Layer="Background" Color="#DDD">
+				<Stroke Width="1" Color="#DDD"/>
+			</Rectangle>
+			<Selection Value="{Propercrrty Value}" MinCount="1" MaxCount="1"/>
+			<Each Items="{ReadProperty Items}">
+				<Panel ux:Name="theEvent" Color="#0000">
+					<Selectable Value="{name}"/>
+					<Label Value="{name}"/>
+					<WhileSelected>
+						<Change theEvent.Color="#AFAF"/>
+						<Change Target="theSelected.Value" Value="{name}" />
+					</WhileSelected>
+
+					<Tapped>
+						<ToggleSelection />
+						<Set thePopup.Value="false"/>
+					</Tapped>
+				</Panel>
+			</Each>
+		</StackPanel>
+	</Panel>
+	<WhileTrue ux:Name="thePopup">
+		<Change theList.Visibility="Visible"/>
+		<Change theOuter.Visibility="Hidden"/>
+	</WhileTrue>
+</Panel>
